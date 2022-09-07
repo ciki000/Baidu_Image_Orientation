@@ -1,6 +1,7 @@
 # 百度网盘AI大赛-文档图像方向识别赛方案
 
 ## 概述
+我们使用了MobileVitv2_050作为我们方法的backbone，使用了我们提出的自监督ROT Loss和Cross Entropy作为损失函数进行训练。我们将模型量化为FP16半精度模型，最终模型大小为2.2M。
 
 ## 快速开始
 模型训练
@@ -42,3 +43,30 @@ python Tofp16.py
 ~~~
 python predict6.py ./datasets/test_A/images/ ./predict.txt
 ~~~
+
+## 训练数据
++ 文档图片
+
+    英文文档图片 DocBacnk
+    
+    中文文档图片 CDLA_DATASET
+
+    百度网盘AI大赛——模糊文档图像恢复赛道训练数据的GroundTruth图片
+
+    使用爬虫爬取的百度百科截图
++ 普通图片
+
+    VOC2007
+    
+    VOC2012
+    
+    food-101
+    
+    Animals_with_Attributes2
+    
+    WIDER
+
+## 模型参数
++ 数据增强
+
+    随机翻转，随机灰度化，随机调整锐度，Random Erasing，Copy-Paste
