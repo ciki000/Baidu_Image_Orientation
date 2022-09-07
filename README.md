@@ -30,13 +30,13 @@ python train.py \
 ~~~
 
 
-导出onnx模型（winmltools最好安装在新的环境中，不然可能会导致冲突）
+导出onnx模型
 ~~~
 python export_onnx.py \
     --checkpoint ./log/mobilevitv2_050/models/model_best.pth
 ~~~
 
-转换为FP16半精度模型
+转换为FP16半精度模型（winmltools最好安装在新的环境中，不然可能会导致冲突）
 ~~~
 python Tofp16.py
 ~~~
