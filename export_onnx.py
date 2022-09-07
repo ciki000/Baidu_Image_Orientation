@@ -7,9 +7,9 @@ from utils.dataloader import load_checkpoint
 
 parser = argparse.ArgumentParser(description='Exporting Model')
 parser.add_argument('--model', default ='mobilevitv2_050', type=str)
-parser.add_argument('--checkpoint', default ='./log/mobilevitv2_050_rotc_GSP_smooth/models/model_best.pth', type=str)
-parser.add_argument('--save_dir', default ='./log/mobilevitv2_050_rotc_GSP_smooth/', type=str)
-parser.add_argument('--gpu_index', default='2', type=str, help='GPUs')
+parser.add_argument('--checkpoint', default ='./log/mobilevitv2_050/models/model_best.pth', type=str)
+parser.add_argument('--save_dir', default ='./', type=str)
+parser.add_argument('--gpu_index', default='0', type=str, help='GPUs')
 
 def main(args):
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -40,7 +40,7 @@ def main(args):
     x = torch.randn((1, 3, 256, 256))
     torch.onnx.export(model,  # model being run
                     x,  # model input (or a tuple for multiple inputs)
-                    os.path.join(args.save_dir, "model_B.onnx"),  # where to save the model (can be a file or file-like object)
+                    os.path.join(args.save_dir, "model_b256.onnx"),  # where to save the model (can be a file or file-like object)
                     export_params=True,  # store the trained parameter weights inside the model file
                     opset_version=10,  # the ONNX version to export the model to
                     do_constant_folding=True,  # whether to execute constant folding for optimization
