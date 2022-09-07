@@ -69,4 +69,28 @@ python predict6.py ./datasets/test_A/images/ ./predict.txt
 ## 模型参数
 + 数据增强
 
-    随机翻转，随机灰度化，随机调整锐度，Random Erasing，Copy-Paste
+    随机剪裁RandomCrop，随机翻转RandomHorizontalFlip, 随机灰度化RandomGrayscale，随机调整锐度RandomAdjustSharpness，Random Erasing，Copy-Paste
+
++ 训练参数
+    ~~~
+    --epochs 120 \
+    --batch_size 128 \
+    --lr 0.001 \
+    --min_lr 5e-5 \
+    --warmup \
+    --warmup_epochs 10 \
+    --rot_loss \
+    --rotLoss_weight 0.1 \
+    --label_smooth 0.1 \
+    --fp16 \
+    --copypaste \
+    --weight_decay 1e-5 
+    ~~~
+
+## 消融实验
+<div align="center">
+  <img src="ablation.png" >
+</div>
+
+## 总结
+可以发现我们提出的自监督ROT Loss可以显著提升模型的性能，遗憾的是，虽然我们在A榜取得了第一名0.872的成绩，大大领先之后选手，但是我们在B榜只取得了第6名。我们认为这是因为这个任务是和数据集高度相关（比如一些动物与食物的图片，如果模型没有在训练集中见过类似的图片是很难预测正确的），因为官方没有提供训练数据且B榜只能提交一次，所以使用训练数据与B榜测试数据分布的重合度的影响大大超过了模型本身的性能影响，可以发现A榜与B榜的成绩并没有非常相关，我们相信如果使用相同的数据集来训练我们的模型能获得最好的性能。
