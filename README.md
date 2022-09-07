@@ -4,6 +4,8 @@
 我们使用了MobileVitv2_050作为我们方法的backbone，使用了我们提出的自监督ROT Loss和Cross Entropy作为损失函数进行训练。我们将模型量化为FP16半精度模型，最终模型大小为2.2M。
 
 ## 快速开始
+没有保留提交checkpoint
+
 模型训练
 ~~~
 python train.py \
@@ -25,7 +27,6 @@ python train.py \
     --fp16 \
     --copypaste \
     --weight_decay 1e-5 
-    # 没有保留checkpoint 
 ~~~
 
 
@@ -48,24 +49,25 @@ python predict6.py ./datasets/test_A/images/ ./predict.txt
 ## 训练数据
 + 文档图片
 
-    英文文档图片 DocBacnk
+    [英文文档图片 DocBacnk](https://github.com/doc-analysis/DocBank)
     
-    中文文档图片 CDLA_DATASET
+    [中文文档图片 CDLA_DATASET](https://github.com/buptlihang/CDLA)
 
-    百度网盘AI大赛——模糊文档图像恢复赛道训练数据的GroundTruth图片
+    [百度网盘AI大赛——模糊文档图像恢复赛道训练数据的GroundTruth图片](https://aistudio.baidu.com/aistudio/competition/detail/349/0/introduction)
 
     使用爬虫爬取的百度百科截图
+
 + 普通图片
 
-    VOC2007
+    [VOC2007](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/)
     
-    VOC2012
+    [VOC2012](https://drive.google.com/drive/folders/1N5vE0AYFcim2TYPNZ6DStYxhVItODwBr)
     
-    food-101
+    [Food-101](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/)
     
-    Animals_with_Attributes2
+    [AwA2](https://cvml.ist.ac.at/AwA2/)
     
-    WIDER
+    [WIDER](http://yjxiong.me/event_recog/WIDER/)
 
 ## 模型参数
 + 数据增强
